@@ -206,11 +206,11 @@ FORM fill_output USING out TYPE zfi_tmodf_s.
         lr_column->set_long_text( value = lv_lg_txt ). " 40-Zeichen
 
       CATCH cx_salv_not_found INTO DATA(error).
-        MESSAGE error->get_text( ) TYPE 'S' DISPLAY LIKE 'E'.
+**        MESSAGE error->get_text( ) TYPE 'S' DISPLAY LIKE 'E'.
       CATCH cx_salv_existing INTO DATA(error2).
-        MESSAGE error2->get_text( ) TYPE 'S' DISPLAY LIKE 'E'.
+**        MESSAGE error2->get_text( ) TYPE 'S' DISPLAY LIKE 'E'.
       CATCH cx_salv_data_error INTO DATA(error3).
-        MESSAGE error3->get_text( ) TYPE 'S' DISPLAY LIKE 'E'.
+**        MESSAGE error3->get_text( ) TYPE 'S' DISPLAY LIKE 'E'.
     ENDTRY.
   ENDLOOP.
 ENDFORM.
