@@ -5,10 +5,13 @@
 *& Author: Hannes Maisch (HANNESM)                                     *
 *& Company:                                                            *
 *& Requested from:                                                     *
-*& Description: Analyseprogramm der diversen Feldstatusgruppen         *
+*& Description: Analysis program of the various field status groups.   *
 *&---------------------------------------------------------------------*
 *& Change History                                                      *
 *& Date        | Author   | CR &  Description                          *
+*&---------------------------------------------------------------------*
+*& 19.09.2024  | HANNESM  | Adjustment of the output of the report to  *
+*&             |          | use the OO-ALV output logic.               *
 *&---------------------------------------------------------------------*
 REPORT zfi_fieldstatus_analyze.
 TYPES: BEGIN OF lty_sel,
@@ -25,7 +28,7 @@ DATA gs_sel          TYPE lty_sel.
 DATA gt_out          TYPE STANDARD TABLE OF zfi_tmodf_s.
 DATA string_pos      TYPE i.
 DATA incoming_string TYPE c LENGTH 200.
-DATA lr_column TYPE REF TO cl_salv_column_table.
+DATA lr_column       TYPE REF TO cl_salv_column_table.
 
 
 SELECTION-SCREEN BEGIN OF BLOCK b01 WITH FRAME TITLE TEXT-b01.
@@ -62,7 +65,7 @@ AT SELECTION-SCREEN OUTPUT.
 INITIALIZATION.
 
 START-OF-SELECTION.
-*--- OO ALV Display
+  " --- OO ALV Display
   TRY.
       cl_salv_table=>factory( IMPORTING r_salv_table = DATA(mr_out)
                               CHANGING  t_table      = gt_out[]   ).
@@ -148,7 +151,6 @@ START-OF-SELECTION.
     ENDLOOP.
   ENDIF.
 
-
   CHECK gt_out IS NOT INITIAL.
 
   " -- Zebramuster aktivieren
@@ -169,6 +171,7 @@ START-OF-SELECTION.
 FORM fill_output USING out TYPE zfi_tmodf_s.
   DATA lv_column TYPE lvc_fname.
   DATA lv_lg_txt TYPE scrtext_l.
+
   LOOP AT tmodf ASSIGNING FIELD-SYMBOL(<tmodf>).
     string_pos = <tmodf>-modif.
     string_pos -= 1.
@@ -197,10 +200,10 @@ FORM fill_output USING out TYPE zfi_tmodf_s.
         lv_column = <tmodf>-modif.
         lr_column ?= mr_out->get_columns( )->get_column( columnname = lv_column ).
 
-        lr_column->set_short_text( value = <tmodf>-text(10) ). "10-Zeichen
-        lr_column->set_medium_text( value = <tmodf>-text(20) ). "20-Zeichen
+        lr_column->set_short_text( value = <tmodf>-text(10) ). " 10-Zeichen
+        lr_column->set_medium_text( value = <tmodf>-text(20) ). " 20-Zeichen
         lv_lg_txt = <tmodf>-text.
-        lr_column->set_long_text( value = lv_lg_txt ). "40-Zeichen
+        lr_column->set_long_text( value = lv_lg_txt ). " 40-Zeichen
 
       CATCH cx_salv_not_found INTO DATA(error).
         MESSAGE error->get_text( ) TYPE 'S' DISPLAY LIKE 'E'.
