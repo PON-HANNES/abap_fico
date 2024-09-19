@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CUS0" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <CUS0>
+    <HEADER>
+     <ACTIVITY>ZFI_C0001</ACTIVITY>
+     <DOCU_ID>SIMGZFI_C0001</DOCU_ID>
+     <C_ACTIVITY>ZFI_C0001</C_ACTIVITY>
+     <TCODE>Y_BS1_59000002</TCODE>
+    </HEADER>
+    <TEXTS>
+     <CUS_IMGACT>
+      <SPRAS>D</SPRAS>
+      <ACTIVITY>ZFI_C0001</ACTIVITY>
+      <TEXT>Substitution für auto. generierte Steuerzeile aktivieren?</TEXT>
+     </CUS_IMGACT>
+    </TEXTS>
+   </CUS0>
+  </asx:values>
+ </asx:abap>
+</abapGit>
