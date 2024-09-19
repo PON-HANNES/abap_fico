@@ -22,11 +22,10 @@ TYPES: BEGIN OF lty_sel,
 CONSTANTS lc_fauna TYPE tmodf-fauna VALUE 'SKB1-FAUS1'.
 
 DATA gs_sel          TYPE lty_sel.
-DATA ok_code_0100    TYPE sy-ucomm.
-DATA gv_title        TYPE sy-title.
 DATA gt_out          TYPE STANDARD TABLE OF zfi_tmodf_s.
 DATA string_pos      TYPE i.
 DATA incoming_string TYPE c LENGTH 200.
+DATA lr_column TYPE REF TO cl_salv_column_table.
 
 
 SELECTION-SCREEN BEGIN OF BLOCK b01 WITH FRAME TITLE TEXT-b01.
@@ -61,17 +60,14 @@ AT SELECTION-SCREEN OUTPUT.
   ENDLOOP.
 
 INITIALIZATION.
-  gv_title = sy-title.
 
 START-OF-SELECTION.
+*--- OO ALV Display
   TRY.
-      DATA(go_grid) = NEW zbc_grid_alv( 'CONTAINER' ).
-    CATCH zcx_grid_alv INTO DATA(error).
-      MESSAGE error->get_text( ) TYPE 'S' DISPLAY LIKE 'E'.
-      LEAVE LIST-PROCESSING.
-      EXIT.
+      cl_salv_table=>factory( IMPORTING r_salv_table = DATA(mr_out)
+                              CHANGING  t_table      = gt_out[]   ).
+    CATCH cx_salv_msg.
   ENDTRY.
-  DATA(lt_fcat) = go_grid->generate_fcat( it_outtab = gt_out ).
 
   SELECT tmodf~ggrup,
          tmodg~ftext,
@@ -152,35 +148,27 @@ START-OF-SELECTION.
     ENDLOOP.
   ENDIF.
 
-  CALL SCREEN 0100.
-*&---------------------------------------------------------------------*
-*&      Module  USER_COMMAND_0100  INPUT
-*&---------------------------------------------------------------------*
-MODULE user_command_0100 INPUT.
-  go_grid->handle_user_command( e_ucomm = ok_code_0100 ).
-ENDMODULE.
-*&---------------------------------------------------------------------*
-*& Module STATUS_0100 OUTPUT
-*&---------------------------------------------------------------------*
-*&
-*&---------------------------------------------------------------------*
-MODULE status_0100 OUTPUT.
-  SET PF-STATUS 'STATUS_0100'.
-  SET TITLEBAR 'TITLE_0100' WITH gv_title.
 
-  TRY.
-      go_grid->set_table_for_first_display( EXPORTING iv_repid        = sy-repid
-                                            CHANGING  it_outtab       = gt_out[]
-                                                      it_fieldcatalog = lt_fcat[]                       ).
-    CATCH zcx_grid_alv INTO DATA(error2). " Ausnahmeklasse für GRID-ALV-Klasse
-      MESSAGE error2->get_text( ) TYPE 'S' DISPLAY LIKE 'E'.
-      LEAVE LIST-PROCESSING.
-      EXIT.
-  ENDTRY.
+  CHECK gt_out IS NOT INITIAL.
 
-ENDMODULE.
+  " -- Zebramuster aktivieren
+  mr_out->get_display_settings( )->set_striped_pattern( cl_salv_display_settings=>true ).
+
+  " --- Funktionen (Toolbar)
+  mr_out->get_functions( )->set_all( abap_true ).
+
+  " --- Optimale Spalatenbreite
+  mr_out->get_columns( )->set_optimize( abap_true ).
+
+  " --- Optimale Spalatenbreite
+  mr_out->get_columns( )->set_optimize( abap_true ).
+
+  mr_out->display( ).
+
 
 FORM fill_output USING out TYPE zfi_tmodf_s.
+  DATA lv_column TYPE lvc_fname.
+  DATA lv_lg_txt TYPE scrtext_l.
   LOOP AT tmodf ASSIGNING FIELD-SYMBOL(<tmodf>).
     string_pos = <tmodf>-modif.
     string_pos -= 1.
@@ -201,11 +189,25 @@ FORM fill_output USING out TYPE zfi_tmodf_s.
       WHEN OTHERS.
         " do nothing
     ENDCASE.
-    ASSIGN lt_fcat[ fieldname = <tmodf>-modif ] TO FIELD-SYMBOL(<ls_fcat>).
-    IF sy-subrc = 0.
-      <ls_fcat>-scrtext_s = <tmodf>-text.
-      <ls_fcat>-scrtext_m = <tmodf>-text.
-      <ls_fcat>-scrtext_l = <tmodf>-text.
-    ENDIF.
+
+    CLEAR lr_column.
+    CLEAR lv_column.
+    CLEAR lv_lg_txt.
+    TRY.
+        lv_column = <tmodf>-modif.
+        lr_column ?= mr_out->get_columns( )->get_column( columnname = lv_column ).
+
+        lr_column->set_short_text( value = <tmodf>-text(10) ). "10-Zeichen
+        lr_column->set_medium_text( value = <tmodf>-text(20) ). "20-Zeichen
+        lv_lg_txt = <tmodf>-text.
+        lr_column->set_long_text( value = lv_lg_txt ). "40-Zeichen
+
+      CATCH cx_salv_not_found INTO DATA(error).
+        MESSAGE error->get_text( ) TYPE 'S' DISPLAY LIKE 'E'.
+      CATCH cx_salv_existing INTO DATA(error2).
+        MESSAGE error2->get_text( ) TYPE 'S' DISPLAY LIKE 'E'.
+      CATCH cx_salv_data_error INTO DATA(error3).
+        MESSAGE error3->get_text( ) TYPE 'S' DISPLAY LIKE 'E'.
+    ENDTRY.
   ENDLOOP.
 ENDFORM.
