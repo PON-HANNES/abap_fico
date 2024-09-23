@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>BTE-Functions for FIBF</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFI_BTETOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFI_BTE</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZFI_PROCESS_00001120</FUNCNAME>
+     <SHORT_TEXT>Beschreibung der Prozess-Schnittstelle 00001120</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>I_BKDF</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <TYP>BKDF</TYP>
+      </RSIMP>
+     </IMPORT>
+     <CHANGING>
+      <RSCHA>
+       <PARAMETER>I_BKDFSUB</PARAMETER>
+       <OPTIONAL>X</OPTIONAL>
+       <REFERENCE>X</REFERENCE>
+       <TYP>BKDF_SUBST</TYP>
+      </RSCHA>
+     </CHANGING>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>T_BKPF</PARAMETER>
+       <DBSTRUCT>BKPF</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_BSEG</PARAMETER>
+       <DBSTRUCT>BSEG</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_BKPFSUB</PARAMETER>
+       <DBSTRUCT>BKPF_SUBST</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_BSEGSUB</PARAMETER>
+       <DBSTRUCT>BSEG_SUBST</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_BSEC</PARAMETER>
+       <DBSTRUCT>BSEC</DBSTRUCT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>I_BKDF</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Belegkopfergänzung für Dauerbuchung</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_BKPF</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Belegköpfe</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_BSEG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Belegzeilen</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_BKPFSUB</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Inhalte der substituierten BKPF-Felder</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_BSEGSUB</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Inhalte der substituierten BSEG-Felder</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_BSEC</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Belegsegment CPD-Daten</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_BKDFSUB</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Prozess-Schnittstellen: Substituierbare Felder beim Buchen</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+   <I18N_TPOOL>
+    <item>
+     <LANGUAGE>E</LANGUAGE>
+     <TEXTPOOL>
+      <item>
+       <ID>I</ID>
+       <KEY>M01</KEY>
+       <ENTRY>Payment run of:</ENTRY>
+       <LENGTH>23</LENGTH>
+      </item>
+      <item>
+       <ID>I</ID>
+       <KEY>M02</KEY>
+       <ENTRY>Identification:</ENTRY>
+       <LENGTH>25</LENGTH>
+      </item>
+     </TEXTPOOL>
+    </item>
+   </I18N_TPOOL>
+   <LONGTEXTS_ZFI_PROCESS_00001120>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>ZFI_PROCESS_00001120</OBJECT>
+      <LANGU>D</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0012</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00029</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>ZFI_PROCESS_00001120</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>D</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00012</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TEXT&amp;  = &apos;Substitution Belegfelder&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;EVENT&amp; = &apos;00001120&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TYPE&amp;  = &apos;PROCESS&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>INCLUDE FI_OPEN_FI_DOCUMENTATION_1 OBJECT DOKU ID TX</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>PROCESS</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Der Prozess wird immer dann erreicht, wenn vor dem Verbuchen eines</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Beleges sämtliche Schlußprüfungen abgeschlossen sind. Zu diesem</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Zeitpunkt ist die Belegnummer jedoch noch nicht vergeben.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>SCHNITTSTELLE</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>An die Zusatzkomponente werden (nur für Informationszwecke) die</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>aktuellen Belegköpfe (mehr als einer z.B. bei</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>buchungskreisübergreifenden Vorgängen), die korrespondierenden</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Belegzeilen sowie die Dauerbuchungsdaten zum Belegkopf und die</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>CPD-Daten übergeben. Diese Daten dürfen nicht bearbeitet werden.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Stattdessen werden zwei weitere Tabellen (T_BKPFSUB, T_BSEGSUB) und die</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Struktur BKDF_SUBSTübergeben. Diese sind gefüllt mit den Inhalten der</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Felder, die substituierbar sind. Das Feld TABIX enthält eine</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Zeilennummer, die anzeigt aus welcher Zeile in T_BSEG bzw. T_BKPF die</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Feldinhalte stammen.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Zu beachten: Nach der Substitution erfolgt keine weitere Prüfung. Eine</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>bestehende Zahlsperre, z.B. auf Grund einer Workflowdefinition, darf</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>nicht überschrieben werden.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;EXAMPLE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>In der 2. Zeile der Tabelle T_BSEG soll der Feldinhalt von SGTXT</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>(Positionstext) mit dem Inhalt &apos;TEST&apos; substituiert werden. Das</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>erfordert im wesentlichen eine Anweisungsfolge der Form</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/</TDFORMAT>
+       <TDLINE>READ TABLE T_BSEGSUB WITH KEY TABIX = 2.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/</TDFORMAT>
+       <TDLINE>T_BSEGSUB-SGTXT = &apos;TEST&apos;.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/</TDFORMAT>
+       <TDLINE>MODIFY T_BSEGSUB INDEX SY-TABIX.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Diese Anweisungsfolge ist im eigenen Baustein zu codieren !!</TDLINE>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>ZFI_PROCESS_00001120</OBJECT>
+      <LANGU>E</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0012</VERSION>
+      <TXTLINES>00028</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>ZFI_PROCESS_00001120</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>E</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00012</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TEXT&amp;  = &apos;Substitution document fields&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;EVENT&amp; = &apos;00001120&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TYPE&amp;  = &apos;PROCESS&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>INCLUDE FI_OPEN_FI_DOCUMENTATION_1 OBJECT DOKU ID TX LANGUAGE EN</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>PROCESS</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>This process is always reached when all the final checks have been</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>completed before a document is updated. However, at this stage, the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>document number has not yet been assigned.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>INTERFACE</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>The current document headers (there will be more than one for</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>cross-company code transactions, for example), the corresponding line</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>items and the recurring entry data for the document header and the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>one-time account data are transferred to the additional component, for</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>information purposes only. You must not edit this data. Instead, two</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>additional tables (T_BKPFSUB and T_BSEGSUB) and the structure BKDF_SUBST</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>are also transferred. The contents of the fields that can be substituted</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>are entered in these tables. Field TABIX contains a line number which</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>shows from which line in T_BSEG or T_BKPF the field contents originate.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Note: There is no additional check after the substitution. You must not</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>overwrite an existing payment lock (for example, due to a workflow</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>definition).</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;EXAMPLE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>In the second line of table T_BSEG, the field contents from SGTXT (item</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>text) should be replaced by the entry &apos;TEST&apos;. This basically requires a</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>statement sequence in the form</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/</TDFORMAT>
+       <TDLINE>READ TABLE T_BSEGSUB WITH KEY TABIX = 2.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/</TDFORMAT>
+       <TDLINE>T_BSEGSUB-SGTXT = &apos;TEST&apos;.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/</TDFORMAT>
+       <TDLINE>MODIFY T_BSEGSUB INDEX SY-TABIX.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>You must code this statement sequence in your own function module.</TDLINE>
+      </TLINE>
+     </LINES>
+    </item>
+   </LONGTEXTS_ZFI_PROCESS_00001120>
+  </asx:values>
+ </asx:abap>
+</abapGit>
