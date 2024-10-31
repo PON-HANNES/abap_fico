@@ -198,16 +198,18 @@ ENDFORM.
 " INCLUDE rggbs_ps_forms.
 
 FORM u800 USING bool_data TYPE gb002_015.
-  SELECT SINGLE * FROM zfi_c0001 WHERE bukrs = @bool_data-bkpf-bukrs INTO @DATA(zfi_c01).
-  IF sy-subrc <> 0.
-    EXIT.
-  ENDIF.
-
   IF NOT line_exists( bool_data-bseg[ xauto = 'X' ] ).
     RETURN.
   ENDIF.
 
-  CASE zfi_c01-sub_option.
+  DATA(sub_order) = zfico_functions=>is_sub_function_active( iv_bukrs   = bool_data-bkpf-bukrs
+                                                             iv_tabname = 'ZFI_C0001' ).
+
+  IF sub_order = space.
+    RETURN.
+  ENDIF.
+
+  CASE sub_order.
     WHEN '1'. " Referenz des Beleges substituieren
       DATA(sgtxt) = bool_data-bkpf-xblnr.
     WHEN '2'. " Buchungstext mit höchsten Betrag substituieren
@@ -216,7 +218,6 @@ FORM u800 USING bool_data TYPE gb002_015.
       IF sy-subrc = 0.
         sgtxt = <sgtxt>.
       ENDIF.
-
     WHEN OTHERS.
       " do nothing
       EXIT.
@@ -240,7 +241,6 @@ FORM u801 USING bool_data TYPE gb002_015.
 ENDFORM.
 
 FORM u802 USING bool_data TYPE gb002_015.
-
 ENDFORM.
 
 *eject

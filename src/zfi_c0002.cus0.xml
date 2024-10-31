@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CUS0" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <CUS0>
+    <HEADER>
+     <ACTIVITY>ZFI_C0002</ACTIVITY>
+     <DOCU_ID>SIMGZFI_C0002</DOCU_ID>
+     <C_ACTIVITY>ZFI_C0002</C_ACTIVITY>
+     <TCODE>Y_BS1_59000003</TCODE>
+    </HEADER>
+    <TEXTS>
+     <CUS_IMGACT>
+      <SPRAS>D</SPRAS>
+      <ACTIVITY>ZFI_C0002</ACTIVITY>
+      <TEXT>Substitution im Zahllauf</TEXT>
+     </CUS_IMGACT>
+    </TEXTS>
+   </CUS0>
+  </asx:values>
+ </asx:abap>
+</abapGit>
