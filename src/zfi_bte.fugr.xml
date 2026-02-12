@@ -87,6 +87,122 @@
       </RSFDO>
      </DOCUMENTATION>
     </item>
+    <item>
+     <FUNCNAME>ZFI_PROCESS_00002040</FUNCNAME>
+     <SHORT_TEXT>Mailen/Faxen von Zahlungsavisen</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>I_REGUH</PARAMETER>
+       <DBFIELD>REGUH</DBFIELD>
+      </RSIMP>
+     </IMPORT>
+     <CHANGING>
+      <RSCHA>
+       <PARAMETER>C_FINAA</PARAMETER>
+       <DBFIELD>FINAA</DBFIELD>
+      </RSCHA>
+     </CHANGING>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>T_FIMSG</PARAMETER>
+       <DBSTRUCT>FIMSG</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>I_REGUH</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Regulierungsdaten</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_FIMSG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Protokolltabelle</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>C_FINAA</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Ausgabestruktur</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>ZFI_PROCESS_00002050</FUNCNAME>
+     <SHORT_TEXT>Optische Archivierung von Zahlungsavisen</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>I_REGUH</PARAMETER>
+       <DBFIELD>REGUH</DBFIELD>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_GJAHR</PARAMETER>
+       <DBFIELD>REGUD-GJAHR</DBFIELD>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_NACHA</PARAMETER>
+       <DBFIELD>FINAA-NACHA</DBFIELD>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_AFORN</PARAMETER>
+       <DBFIELD>T042B-AFORN</DBFIELD>
+      </RSIMP>
+     </IMPORT>
+     <CHANGING>
+      <RSCHA>
+       <PARAMETER>C_ITCPO</PARAMETER>
+       <DBFIELD>ITCPO</DBFIELD>
+      </RSCHA>
+      <RSCHA>
+       <PARAMETER>C_ARCHIVE_INDEX</PARAMETER>
+       <DBFIELD>TOA_DARA</DBFIELD>
+       <DEFAULT>SPACE</DEFAULT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSCHA>
+      <RSCHA>
+       <PARAMETER>C_ARCHIVE_PARAMS</PARAMETER>
+       <DBFIELD>ARC_PARAMS</DBFIELD>
+       <DEFAULT>SPACE</DEFAULT>
+       <OPTIONAL>X</OPTIONAL>
+      </RSCHA>
+     </CHANGING>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>I_REGUH</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Regulierungsdaten</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_GJAHR</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Geschäftsjahr</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_NACHA</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Nachrichtenart (1 für Druck, 2 für Fax)</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_AFORN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Formular für das Zahlungsavis</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>C_ITCPO</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Druckparameter</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>C_ARCHIVE_INDEX</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Archivindex zur optischen Archivierung</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>C_ARCHIVE_PARAMS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Archivparameter zur optischen Archivierung</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
    </FUNCTIONS>
    <I18N_TPOOL>
     <item>
@@ -399,6 +515,712 @@
      </LINES>
     </item>
    </LONGTEXTS_ZFI_PROCESS_00001120>
+   <LONGTEXTS_ZFI_PROCESS_00002040>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>ZFI_PROCESS_00002040</OBJECT>
+      <LANGU>D</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0013</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00028</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>ZFI_PROCESS_00002040</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>D</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00013</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TEXT&amp;  = &apos;Zahlungsverkehr: Ausgabe von Avisen (Nachrichtenart)&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;EVENT&amp; = &apos;00002040&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TYPE&amp;  = &apos;PROCESS&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>INCLUDE FI_OPEN_FI_DOCUMENTATION_1 OBJECT DOKU ID TX</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>Prozess</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Der Prozess erlaubt die Ermittlung des für das Zahlungsavis zu</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>verwendende Ausgabegeräts (Drucker, Fax oder Internet). Ferner ist es</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>möglich, das in der Konfiguration zum Zahlungsprogramm hinterlegte</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Avisformular zu übersteuern.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>Schnittstelle</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Aus den übergebenen Regulierungsdaten (I_REGUH) kann ermittelt werden,</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>ob der Geschäftspartner das Zahlungsavis per Brief, per Fax oder per</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>E-Mail erhalten soll. Beispielsweise kann die Faxnummer aus dem</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Stammsatz des Geschäftspartners (ZTLFX) für diese Entscheidung</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>hinzugezogen werden. Einen Vorschlag für ein mögliches Kundenprogramm</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>finden Sie im Funktionsbaustein SAMPLE_PROCESS_00002040, wobei das</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Programm individuell anzupassen ist.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Zurückgegeben wird die Nachrichtenart (1 für Druck, 2 für Fax, I für</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Internet), eventuell das vom Customizing abweichende Formular und die</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>für das Faxen notwendigen Angaben (C_FINAA). Nähere Angaben entnehmen</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Sie bitte der Struktur &lt;DS:TRAN.SE11&gt;FINAA&lt;/&gt;.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Bei Verwendung des Faxdeckblatts (z.B. &lt;DS:TRAN.SE71&gt;FI_FAX_COVER_A4</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>=</TDFORMAT>
+       <TDLINE>&lt;/&gt;) sollten die Adressen des &lt;DS:TRAN.OBY6&gt;Buchungskreises&lt;/&gt;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>(Bearbeiten -&gt; Adresse) und des</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>&lt;DS:TX.FI_RFFO_CUSTOMIZING_T001S&gt;Buchhaltungssachbearbeiters&lt;/&gt; gefüllt</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>sein. Die Adresse des Geschäftspartners wird dem Stammsatz entnommen.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Zusätzlich können Nachrichten (Messages) übergeben werden, die im</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Protokoll des gerufenen Zahlungsträgerprogramms ausgegeben werden.</TDLINE>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>ZFI_PROCESS_00002040</OBJECT>
+      <LANGU>E</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0013</VERSION>
+      <TXTLINES>00027</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>ZFI_PROCESS_00002040</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>E</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00013</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TEXT&amp;  = &apos;Pmnt transactions: Issuing advice notes (mess.type)&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;EVENT&amp; = &apos;00002040&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TYPE&amp;  = &apos;PROCESS&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>INCLUDE FI_OPEN_FI_DOCUMENTATION_1 OBJECT DOKU ID TX LANGUAGE EN</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>Process</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>This process is used to determine the output device (printer, fax</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>machine or Internet ) to be used for the payment advice note. It is</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>also possible to override the payment advice form defined in</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Customizing for the payment program.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>Interface</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>The system can use the transferred payment data (I_REGUH) to determine</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>whether the customer/vendor should receive the payment advice note by</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>mail, fax or e-mail. The fax number from the customer/vendor master</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>record (ZTLFX) can be referred to. You can find a template for a</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>customer program in function module SAMPLE_PROCESS_00002040 and adapt</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>the program to meet your individual requirements.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>The message type (1 for a printout, 2 for a fax) is transferred back,</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>as well as the alternative form (where applicable) and the details</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>required for the fax (C_FINAA). For more details, see the structure</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>&lt;DS:TRAN.SE11&gt;FINAA&lt;/&gt;.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>If you are using a fax cover sheet (such as</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>&lt;DS:TRAN.SE71&gt;FI_FAX_COVER_A4&lt;/&gt;), you should enter the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>&lt;DS:TRAN.OBY6&gt;company code&lt;/&gt; address (Edit -&gt; Address) and the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>&lt;DS:TX.FI_RFFO_CUSTOMIZING_T001S&gt;accounting clerk&apos;s&lt;/&gt; address. The</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>customer/vendor address is taken from the master record.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Messages issued in the log for the called payment medium program can</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>also be transferred.</TDLINE>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>ZFI_PROCESS_00002040          C_FINAA</OBJECT>
+      <LANGU>D</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0002</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00002</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>ZFI_PROCESS_00002040          C_FINAA</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>D</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00002</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;MEANING&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Ausgabestruktur mit den für die verschiedenen Ausgabegeräten zusätzlich</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>benötigten Parameter (Fax Nummer, e-mail, u.v.m).</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;RANGE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;DEFAULT&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>ZFI_PROCESS_00002040          C_FINAA</OBJECT>
+      <LANGU>E</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0002</VERSION>
+      <TXTLINES>00002</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>ZFI_PROCESS_00002040          C_FINAA</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>E</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00002</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;MEANING&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Output structure containing the additional required parameters (such as</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>fax number or e-mail address) for the various output devices.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;RANGE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;DEFAULT&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>ZFI_PROCESS_00002040          T_FIMSG</OBJECT>
+      <LANGU>D</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0002</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00001</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>ZFI_PROCESS_00002040          T_FIMSG</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>D</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00002</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;MEANING&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>INCLUDE FI_OPEN_FI_DOCUMENTATION_MSG OBJECT DOKU ID TX</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;RANGE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;DEFAULT&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>ZFI_PROCESS_00002040          T_FIMSG</OBJECT>
+      <LANGU>E</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0002</VERSION>
+      <TXTLINES>00001</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>ZFI_PROCESS_00002040          T_FIMSG</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>E</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00002</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;MEANING&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>INCLUDE FI_OPEN_FI_DOCUMENTATION_MSG OBJECT DOKU ID TX LANGUAGE EN</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;RANGE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;DEFAULT&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+     </LINES>
+    </item>
+   </LONGTEXTS_ZFI_PROCESS_00002040>
+   <LONGTEXTS_ZFI_PROCESS_00002050>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>ZFI_PROCESS_00002050</OBJECT>
+      <LANGU>D</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0012</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00017</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>ZFI_PROCESS_00002050</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>D</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00012</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TEXT&amp;  = &apos;Zahlungsverkehr: Ausgabe von Avisen (Druckparameter)&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;EVENT&amp; = &apos;00002050&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TYPE&amp;  = &apos;PROCESS&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>INCLUDE FI_OPEN_FI_DOCUMENTATION_1 OBJECT DOKU ID TX</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>Prozess</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Der Prozess erlaubt die Ermittlung der für das Zahlungsavis zu</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>verwendende Druckparameter (Struktur ITCPO) sowie die Parameter zur</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>optischen Archivierung der Avise, sofern dies gewünscht ist.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>Schnittstelle</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Auf Basis der übergebenen Regulierungsdaten (I_REGUH), den ggf. im</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Prozess 00002040 geänderten Daten (Nachrichtenart und Formular) und den</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>vorgeschlagenen Druckparametern können die Parameter zum Druck des</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Avises modifiziert und die Archivierungsparameter gesetzt werden.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;EXAMPLE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Der Funktionsbaustein</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>&lt;DS:FU.FI_OPT_ARCHIVE_PAYMENT_ADVICE&gt;FI_OPT_ARCHIVE_PAYMENT_ADVICE&lt;/&gt;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>kann als Vorlage für ein ablauffähiges Beispiel für die optische</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Archivierung von Avisen verwendet werden.</TDLINE>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>ZFI_PROCESS_00002050</OBJECT>
+      <LANGU>E</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0012</VERSION>
+      <TXTLINES>00019</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>ZFI_PROCESS_00002050</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>E</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00012</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TEXT&amp;  = &apos;Payment transactions: Output of payment advice notes&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>(print parameters)</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;EVENT&amp; = &apos;00002050&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>DEFINE &amp;TYPE&amp;  = &apos;PROCESS&apos;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/:</TDFORMAT>
+       <TDLINE>INCLUDE FI_OPEN_FI_DOCUMENTATION_1 OBJECT DOKU ID TX</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>Process</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>This process permits the print parameters (structure ITCPO) to be used</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>for the payment advice note and the parameters for optically archiving</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>the payment advice notes to be determined if required.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>Interface</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>On the basis of the payment data transferred (I_REGUH), the data that</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>has potentially been changed in process 00002040 (message type and</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>formula), and the proposed print parameters, the print parameters for</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>the payment advice note can be modified and the archiving parameters</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>can be set.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;EXAMPLE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Function module</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>&lt;DS:FU.FI_OPT_ARCHIVE_PAYMENT_ADVICE&gt;FI_OPT_ARCHIVE_PAYMENT_ADVICE&lt;/&gt;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>can be used as a template for an executable example for the optical</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>archiving of payment advice notes.</TDLINE>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>ZFI_PROCESS_00002050          C_ITCPO</OBJECT>
+      <LANGU>D</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0002</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00002</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>ZFI_PROCESS_00002050          C_ITCPO</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>D</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00002</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;MEANING&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Ausgabestruktur mit den für die verschiedenen Ausgabegeräten zusätzlich</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>benötigten Parameter (Fax Nummer, e-mail, u.v.m).</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;RANGE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;DEFAULT&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>FU</ID>
+      <OBJECT>ZFI_PROCESS_00002050          C_ITCPO</OBJECT>
+      <LANGU>E</LANGU>
+      <TYP>T</TYP>
+      <VERSION>0002</VERSION>
+      <TXTLINES>00002</TXTLINES>
+      <DOKSTATE>A</DOKSTATE>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>ZFI_PROCESS_00002050          C_ITCPO</TDNAME>
+      <TDID>FU</TDID>
+      <TDSPRAS>E</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00002</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;MEANING&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Output structure for the additional parameters required for the</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>different output devices (fax number, e-mail, and so on).</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;RANGE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;DEFAULT&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+     </LINES>
+    </item>
+   </LONGTEXTS_ZFI_PROCESS_00002050>
   </asx:values>
  </asx:abap>
 </abapGit>

@@ -4,6 +4,8 @@
   <asx:values>
    <DEVC>
     <CTEXT>Entwicklungen für Batch-Funktionen</CTEXT>
+    <LANGUAGE>D</LANGUAGE>
+    <MASTERLANG>D</MASTERLANG>
    </DEVC>
   </asx:values>
  </asx:abap>
