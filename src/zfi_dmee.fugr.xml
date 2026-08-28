@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Funktionsgruppe für Zahlungen</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LZFI_DMEETOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLZFI_DMEE</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>ZFI_DMEE_AP_PAYMEDIUM</FUNCNAME>
+     <SHORT_TEXT>Verwendungszweckaufbau Kreditoren</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>I_FPAYH</PARAMETER>
+       <TYP>FPAYH</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>I_FPAYHX</PARAMETER>
+       <TYP>FPAYHX</TYP>
+      </RSIMP>
+     </IMPORT>
+     <CHANGING>
+      <RSCHA>
+       <PARAMETER>C_XAVIS_REQ</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+      </RSCHA>
+     </CHANGING>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>T_FPAYP</PARAMETER>
+       <DBSTRUCT>FPAYP</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>T_PAYMENT_DETAILS</PARAMETER>
+       <DBSTRUCT>FPM_PAYD</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>I_FPAYH</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Zahlungsträger: Daten zur Zahlung</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>I_FPAYHX</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Zahlungsträger: Aufbereitete Daten zur Zahlung</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_FPAYP</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Zahlungsträger: Daten zu bezahlten Posten</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>T_PAYMENT_DETAILS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Zahlungsträger: Aufbau der Tabelle für den Verwendungszweck</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>C_XAVIS_REQ</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>
